@@ -9,9 +9,9 @@ pipeline {
  stages {
    stage('Check for secrets'){
      steps {
-       sh "rm -rf trufflehog.json || true"
-       sh "docker run dxa4481/trufflehog:latest --json https://github.com/toshith/devsecops.git > trufflehog.json ||true"
-       sh "cat trufflehog.json"
+       sh "rm -rf truffle.json || true"
+       sh "docker run dxa4481/trufflehog:latest --json https://github.com/toshith/devsecops.git > truffle.json"
+       sh "cat truffle.json"
       }
    }
    stage('Build docker image') {
