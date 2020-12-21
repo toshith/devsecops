@@ -14,6 +14,15 @@ pipeline {
        sh "cat truffle.json"
       }
    }
+   stage('SCA'){
+	     steps {
+		      sh "pip3 install safety"
+		      sh "rm -rf safety.json || true"
+		      sh "safety check -r requirements.txt --json > safety.json"
+		      sh "cat safety.json"
+		    }
+		 }
+  
    stage('Build docker image') {
      steps {
       script {
